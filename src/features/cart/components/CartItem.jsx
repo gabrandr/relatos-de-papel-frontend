@@ -5,58 +5,57 @@ export default function CartItem({ item }) {
   const { addToCart, decreaseQuantity, removeFromCart } = useCart();
 
   return (
-    <div className="flex items-center justify-between border-b border-gray-200 py-4">
+    <div className="flex items-center justify-between border-b border-slate-200 py-6 last:border-0 hover:bg-slate-50 transition-colors px-2">
       {/* Columna Item: Imagen + Título */}
-      <div className="flex items-center gap-4 flex-2">
+      <div className="flex items-center gap-6 flex-[2]">
         <img
           src={item.image}
           alt={item.title}
-          className="w-16 h-24 object-cover rounded shadow-sm"
+          className="w-20 h-28 object-cover rounded-md shadow-sm border border-slate-200"
         />
         <div>
-          {/* La imagen muestra el titulo en mayusculas y quizas descripcion pequeña */}
-          <h3 className="font-bold text-gray-800 uppercase text-sm tracking-wide">
+          <h3 className="font-bold text-slate-800 uppercase text-sm tracking-wide mb-1">
             {item.title}
           </h3>
-          <p className="text-xs text-gray-500 line-clamp-2 max-w-[200px] mt-1">
+          <p className="text-xs text-slate-500 line-clamp-2 max-w-[220px] leading-relaxed">
             {item.description}
           </p>
         </div>
       </div>
 
       {/* Columna Cantidad: Botones y numero */}
-      <div className="flex items-center justify-center gap-3 flex-1">
+      <div className="flex items-center justify-center gap-4 flex-1">
         <button
           onClick={() => decreaseQuantity(item.id)}
-          className="w-8 h-8 flex items-center justify-center bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+          className="w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-600 rounded-full hover:bg-primary hover:text-white transition-all shadow-sm"
         >
           -
         </button>
-        <span className="text-lg font-medium w-6 text-center">
+        <span className="text-lg font-semibold w-8 text-center text-slate-700">
           {item.quantity}
         </span>
         <button
           onClick={() => addToCart(item)}
-          className="w-8 h-8 flex items-center justify-center bg-blue-500 text-white rounded hover:bg-blue-600 transition"
+          className="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full hover:bg-primary-dark transition-all shadow-sm shadow-primary/30"
         >
           +
         </button>
       </div>
 
       {/* Columna Eliminar + Precio */}
-      <div className="flex items-center justify-end gap-6 flex-1">
+      <div className="flex items-center justify-end gap-8 flex-1">
         <button
           onClick={() => removeFromCart(item.id)}
-          className="text-gray-600 hover:text-red-500 transition"
+          className="text-slate-400 hover:text-red-500 transition-colors p-2 hover:bg-red-50 rounded-full"
           title="Eliminar del carrito"
         >
-          {/* Icono de basurero simple SVG */}
           <svg
+            xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-5 h-5"
           >
             <path
               strokeLinecap="round"
@@ -65,7 +64,7 @@ export default function CartItem({ item }) {
             />
           </svg>
         </button>
-        <span className="text-lg font-semibold min-w-[80px] text-right">
+        <span className="text-lg font-bold min-w-[90px] text-right text-slate-800">
           ${(item.price * item.quantity).toFixed(2)}
         </span>
       </div>

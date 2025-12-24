@@ -15,11 +15,11 @@ export default function CartList() {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row gap-8 w-full max-w-6xl mx-auto p-4">
+    <div className="flex flex-col lg:flex-row gap-8 w-9/12 mx-auto p-4 mt-8">
       {/* Lado Izquierdo: Lista de Items */}
-      <div className="flex-2">
+      <div className="flex-[2]">
         {/* Header de la Tabla */}
-        <div className="grid grid-cols-[2fr_1fr_1fr] bg-gray-200 p-3 rounded-t-lg text-gray-700 font-medium text-sm uppercase tracking-wider mb-2">
+        <div className="grid grid-cols-[2fr_1fr_1fr] bg-slate-100 p-4 rounded-t-lg text-slate-700 font-medium text-sm uppercase tracking-wider mb-2 border-b-2 border-primary/20">
           <div className="pl-4">Item</div>
           <div className="text-center">Cantidad</div>
           <div className="text-right pr-4">Precio</div>

@@ -7,14 +7,12 @@
   --color-primary-dark: #312e81;
   --color-accent: #f59e0b;
 
-  /* Semantic Map */
-  --color-surface: #ffffff;
-  --color-background: #f8fafc;
+  /* Neutrals override or extend if needed, but Tailwind has Slate built-in usually.
+     We can map specific semantic names if we want */
 }
 
-/* Reset basics */
 body {
-  background-color: var(--color-background);
-  color: #0f172a; /* Slate 900 based on design system */
+  background-color: #f8fafc; /* Canvas color */
+  color: #0f172a; /* Text Main */
   font-family: system-ui, -apple-system, sans-serif;
 }
