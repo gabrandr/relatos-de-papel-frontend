@@ -7,36 +7,48 @@ export const useCart = create(
       cart: [],
       discount: 0, // Porcentaje de descuento (0-100)
 
-      addToCart: (book) => {
+      addToCart: (book, format = "Físico") => {
         const { cart } = get();
-        const bookInCart = cart.findIndex((item) => item.id === book.id);
+        // Generar un ID único para el item en el carrito basado en el libro y el formato
+        const cartId = `${book.id}-${format}`;
+        const itemInCartIndex = cart.findIndex(
+          (item) => item.cartId === cartId
+        );
 
-        if (bookInCart >= 0) {
+        if (itemInCartIndex >= 0) {
           const newCart = structuredClone(cart);
-          newCart[bookInCart].quantity += 1;
+          newCart[itemInCartIndex].quantity += 1;
           set({ cart: newCart });
         } else {
           set({
-            cart: [...cart, { ...book, quantity: 1 }],
+            cart: [
+              ...cart,
+              {
+                ...book,
+                cartId, // ID único para gestión interna del carrito
+                format, // Guardamos el formato seleccionado
+                quantity: 1,
+              },
+            ],
           });
         }
       },
 
-      removeFromCart: (id) => {
+      removeFromCart: (cartId) => {
         set((state) => ({
-          cart: state.cart.filter((item) => item.id !== id),
+          cart: state.cart.filter((item) => item.cartId !== cartId),
         }));
       },
 
-      decreaseQuantity: (id) => {
+      decreaseQuantity: (cartId) => {
         const { cart } = get();
-        const bookInCart = cart.findIndex((item) => item.id === id);
+        const itemIndex = cart.findIndex((item) => item.cartId === cartId);
 
-        if (bookInCart >= 0) {
+        if (itemIndex >= 0) {
           const newCart = structuredClone(cart);
           // Solo disminuir si es mayor a 1
-          if (newCart[bookInCart].quantity > 1) {
-            newCart[bookInCart].quantity -= 1;
+          if (newCart[itemIndex].quantity > 1) {
+            newCart[itemIndex].quantity -= 1;
             set({ cart: newCart });
           }
         }

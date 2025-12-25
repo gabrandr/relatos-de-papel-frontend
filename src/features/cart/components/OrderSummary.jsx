@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useCart } from "../../../hooks/useCart";
 
 export default function OrderSummary() {
@@ -91,9 +92,12 @@ export default function OrderSummary() {
         </div>
       </div>
 
-      <button className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-dark transition-all transform hover:-translate-y-0.5 shadow-lg shadow-primary/30 uppercase tracking-widest text-sm">
+      <Link
+        to="/checkout"
+        className="block text-center w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-dark transition-all transform hover:-translate-y-0.5 shadow-lg shadow-primary/30 uppercase tracking-widest text-sm"
+      >
         Proceder al Pago
-      </button>
+      </Link>
     </div>
   );
 }

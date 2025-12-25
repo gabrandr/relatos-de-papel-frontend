@@ -5,9 +5,9 @@ export default function CartItem({ item }) {
   const { addToCart, decreaseQuantity, removeFromCart } = useCart();
 
   return (
-    <div className="flex items-center justify-between border-b border-slate-200 py-6 last:border-0 hover:bg-slate-50 transition-colors px-2">
+    <div className="grid grid-cols-1 sm:grid-cols-[2fr_1fr_1fr] gap-4 sm:gap-0 items-center border-b border-slate-200 py-6 last:border-0 hover:bg-slate-50 transition-colors px-2 relative">
       {/* Columna Item: Imagen + Título */}
-      <div className="flex items-center gap-6 flex-[2]">
+      <div className="flex items-center gap-4 sm:gap-6">
         <img
           src={item.image}
           alt={item.title}
@@ -17,16 +17,21 @@ export default function CartItem({ item }) {
           <h3 className="font-bold text-slate-800 uppercase text-sm tracking-wide mb-1">
             {item.title}
           </h3>
-          <p className="text-xs text-slate-500 line-clamp-2 max-w-[220px] leading-relaxed">
+          <p className="text-xs text-slate-500 line-clamp-2 max-w-[220px] leading-relaxed hidden sm:block">
             {item.description}
+          </p>
+          {/* Precio visible aquí solo en móvil */}
+          <p className="text-primary font-bold sm:hidden mt-2">
+            ${(item.price * item.quantity).toFixed(2)}
           </p>
         </div>
       </div>
 
       {/* Columna Cantidad: Botones y numero */}
-      <div className="flex items-center justify-center gap-4 flex-1">
+      <div className="flex items-center justify-start sm:justify-center gap-4 mt-2 sm:mt-0">
+        <span className="text-sm text-slate-500 sm:hidden">Cant:</span>
         <button
-          onClick={() => decreaseQuantity(item.id)}
+          onClick={() => decreaseQuantity(item.cartId)}
           className="w-8 h-8 flex items-center justify-center bg-slate-100 text-slate-600 rounded-full hover:bg-primary hover:text-white transition-all shadow-sm"
         >
           -
@@ -35,17 +40,17 @@ export default function CartItem({ item }) {
           {item.quantity}
         </span>
         <button
-          onClick={() => addToCart(item)}
+          onClick={() => addToCart(item, item.format)}
           className="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-full hover:bg-primary-dark transition-all shadow-sm shadow-primary/30"
         >
           +
         </button>
       </div>
 
-      {/* Columna Eliminar + Precio */}
-      <div className="flex items-center justify-end gap-8 flex-1">
+      {/* Columna Eliminar + Precio (Desktop) */}
+      <div className="flex items-center justify-between sm:justify-end gap-8 mt-2 sm:mt-0 absolute top-4 right-4 sm:static">
         <button
-          onClick={() => removeFromCart(item.id)}
+          onClick={() => removeFromCart(item.cartId)}
           className="text-slate-400 hover:text-red-500 transition-colors p-2 hover:bg-red-50 rounded-full"
           title="Eliminar del carrito"
         >
@@ -64,7 +69,7 @@ export default function CartItem({ item }) {
             />
           </svg>
         </button>
-        <span className="text-lg font-bold min-w-[90px] text-right text-slate-800">
+        <span className="text-lg font-bold min-w-[90px] text-right text-slate-800 hidden sm:block">
           ${(item.price * item.quantity).toFixed(2)}
         </span>
       </div>
