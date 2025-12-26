@@ -15,6 +15,15 @@
 /* Reset basics */
 body {
   background-color: var(--color-background);
-  color: #0f172a; /* Slate 900 based on design system */
+  color: #0f172a;
+  /* Slate 900 based on design system */
   font-family: system-ui, -apple-system, sans-serif;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 500,
+    'GRAD' 0,
+    'opsz' 24;
 }
