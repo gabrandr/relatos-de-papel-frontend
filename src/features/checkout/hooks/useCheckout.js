@@ -9,7 +9,7 @@ export function useCheckout() {
     });
     const [paymentMethod, setPaymentMethod] = useState("card");
     const [card, setCard] = useState({
-        nameCard: "",
+        cardholderName: "",
         number: "",
         expiry: "",
         cvv: "",
