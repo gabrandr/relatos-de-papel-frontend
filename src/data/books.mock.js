@@ -8,7 +8,7 @@ export const books = [
     image:
       "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=800&auto=format&fit=crop",
     stock: 12,
-    formats: ["fisico", "digital"], // Ambos
+    formats: ["fisico", "digital"],
     description: "La obra cumbre de la literatura española.",
   },
   {
@@ -121,5 +121,56 @@ export const books = [
     stock: 18,
     formats: ["fisico", "digital"],
     description: "La famosa novela de vampiros.",
+  },
+
+  // 🔹 Nuevos libros con títulos similares
+  {
+    id: 11,
+    title: "El Quijote Ilustrado",
+    author: "Miguel de Cervantes",
+    isbn: "978-8432223451",
+    price: 22.0,
+    image:
+      "https://images.unsplash.com/photo-1528207776546-365bb710ee93?q=80&w=800&auto=format&fit=crop",
+    stock: 10,
+    formats: ["fisico"],
+    description: "Edición ilustrada de las aventuras de Don Quijote.",
+  },
+  {
+    id: 12,
+    title: "El Principito y sus Viajes",
+    author: "Antoine de Saint-Exupéry",
+    isbn: "978-0156029995",
+    price: 11.5,
+    image:
+      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=800&auto=format&fit=crop",
+    stock: 22,
+    formats: ["fisico", "digital"],
+    description: "Una reinterpretación de los viajes del Principito.",
+  },
+  {
+    id: 13,
+    title: "1984: Edición Comentada",
+    author: "George Orwell",
+    isbn: "978-0451529990",
+    price: 14.99,
+    image:
+      "https://images.unsplash.com/photo-1455885666521-373ef0a0c8c9?q=80&w=800&auto=format&fit=crop",
+    stock: 14,
+    formats: ["digital"],
+    description: "Edición especial con análisis y notas sobre la obra.",
+  },
+  {
+    id: 14,
+    title: "Cien Años de Soledad: Edición Conmemorativa",
+    author: "Gabriel García Márquez",
+    isbn: "978-0307479999",
+    price: 19.99,
+    image:
+      "https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?q=80&w=800&auto=format&fit=crop",
+    stock: 18,
+    formats: ["fisico", "digital"],
+    description:
+      "Edición especial que celebra la obra maestra de García Márquez.",
   },
 ];
