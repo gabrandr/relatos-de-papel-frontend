@@ -3,8 +3,9 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '30s', target: 100 },
-    { duration: '1m', target: 300 }, // Carga segura para ejecución local nativa
+    { duration: '30s', target: 1000 },
+    { duration: '1m', target: 5000 },
+    { duration: '2m', target: 10000 }, // Requisito de concurrencia de la actividad
     { duration: '30s', target: 0 },
   ],
   thresholds: {

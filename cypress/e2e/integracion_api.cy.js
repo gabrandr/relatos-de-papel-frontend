@@ -103,6 +103,31 @@ describe('Pruebas de Integración de API Gateway', () => {
               failOnStatusCode: false
             }).then((deleteResponse) => {
               expect(deleteResponse.status).to.eq(204);
+
+              // 6. READ: Buscar luego de eliminar (debe no existir)
+              cy.request({
+                method: 'POST',
+                url: `${GATEWAY_URL}/api/books/${createdBookId}`,
+                body: {
+                  targetMethod: "GET",
+                  queryParams: {},
+                  body: null
+                },
+                failOnStatusCode: false
+              }).then((readAfterDeleteResponse) => {
+                // Dependiendo de la implementacion puede devolver 404 o 204/200 con body vacio.
+                // Se valida el comportamiento esperado de "no encontrado".
+                expect([404, 204, 200]).to.include(readAfterDeleteResponse.status);
+
+                if (readAfterDeleteResponse.status === 200) {
+                  expect(readAfterDeleteResponse.body).to.satisfy(
+                    (body) =>
+                      body === null ||
+                      body === "" ||
+                      (Array.isArray(body) && body.length === 0)
+                  );
+                }
+              });
             });
           });
         });
