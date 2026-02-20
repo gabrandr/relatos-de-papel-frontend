@@ -1,120 +1,173 @@
 # Guion de video memoria (lectura directa) - Actividad 3
 
 ## Objetivo del guion
-Este guion esta pensado para lectura durante la grabacion y para mostrar evidencia en pantalla mientras habla cada integrante.
 
-Duracion objetivo total: **11:30 - 12:00 min**
+Este guion esta preparado para leerlo durante la grabacion mientras cada integrante muestra evidencia en pantalla.
+
+Duracion objetivo total: **11:45 - 12:00 min**
 
 ---
 
-## Reparto por persona y tiempos
+## Apertura general (Persona 1 - 0:00 a 2:00)
 
-### Persona 1 (0:00 - 2:10) - Contexto del sistema
 **Que abrir en pantalla**
-1. Frontend en ejecucion (`http://localhost:5173`).
-2. Estructura del proyecto en el IDE (carpetas `cypress/`, `load-tests/`, `docs/aceptacion/`).
-3. Archivo de caso de uso: `docs/aceptacion/CU-01_compra_libro.md`.
 
-**Guion sugerido**
-"En esta actividad grupal automatizamos pruebas de aceptacion, funcionales, de sistema y de carga para Relatos de Papel. El frontend permite buscar libros, agregarlos al carrito y finalizar compra. El backend se consume por un API Gateway que recibe peticiones POST y transforma la peticion segun `targetMethod`. Nuestro objetivo fue validar comportamiento esperado, verificar integracion REST y evaluar rendimiento."
+1. Frontend levantado en `http://localhost:5173`.
+2. Estructura del proyecto en el IDE (carpetas `cypress/`, `load-tests/`, `docs/`).
+3. Diapositiva de portada (si ya la tienen).
 
-"Como caso de uso principal definimos CU-01: compra de libro desde frontend. Aqui documentamos actor, precondiciones, flujo principal y criterios de aceptacion AC-01 a AC-07."
+**Lectura literal**
+"Saludos, Somos el equipo 28, presentamos la Actividad 3 de automatizacion de pruebas. En esta presentacion mostraremos evidencias de los cuatro tipos de prueba solicitados: aceptacion, funcionales web, sistema API REST y carga."
 
-"La rubrica de evaluacion tiene cinco criterios de igual peso: aceptacion, funcionales web, sistema API REST, carga y calidad de video memoria. En esta grabacion mostraremos evidencia directa de cada criterio."
+"Las herramientas que utilizamos fueron **Cypress**, **Postman** y **k6**. Cypress lo usamos para pruebas E2E de interfaz y tambien para pruebas de integracion API. Postman lo usamos como evidencia complementaria para API REST mediante una coleccion CRUD automatizable. k6 lo usamos para pruebas de carga."
+
+"La rubrica tiene cinco criterios con el mismo peso: aceptacion, funcionales web, sistema API REST, carga y calidad de video memoria. En este video vamos a recorrer cada criterio con evidencia directa."
+
+"Es importante aclarar que en esta exposicion no solo contamos lo que hicimos, sino que mostraremos archivos reales del proyecto y evidencia de ejecucion. De esta forma la presentacion mantiene trazabilidad entre requisito, implementacion y resultado."
+
+"Con este contexto inicial, damos paso al primer criterio, correspondiente a validacion y pruebas de aceptacion."
 
 ---
 
-### Persona 2 (2:10 - 4:10) - Automatizacion de pruebas de aceptacion
+## Criterio 1 - Aceptacion (Persona 2 - 2:00 a 4:00)
+
 **Que abrir en pantalla**
-1. `docs/aceptacion/CU-01_compra_libro.feature`.
-2. `docs/aceptacion/CU-01_compra_libro.md` (seccion criterios de aceptacion y trazabilidad).
-3. `cypress/e2e/aceptacion_front.cy.js`.
 
-**Guion sugerido**
-"Para aceptacion usamos Cypress mas documentacion BDD en Gherkin. En el `.feature` se definen escenarios funcionales de negocio y en el spec `aceptacion_front.cy.js` se automatizan esos criterios."
+1. `docs/aceptacion/CU-01_compra_libro.md`
+2. `docs/aceptacion/CU-01_compra_libro.feature`
+3. `cypress/e2e/aceptacion_front.cy.js`
 
-"Validamos AC-01 a AC-07: busqueda por titulo, detalle del libro, confirmacion visual al agregar, presencia en carrito, formulario de checkout, redireccion a confirmacion y numero de pedido no vacio. Esta trazabilidad requisito-prueba nos permite justificar el cumplimiento del criterio de aceptacion."
+**Lectura literal**
+"Para el criterio de aceptacion documentamos el caso de uso CU-01: compra de libro desde frontend. Este documento incluye objetivo, actor, precondiciones, flujo principal y criterios de aceptacion."
 
-"La evidencia que mostramos aqui es: documento del caso de uso, escenarios Gherkin y prueba automatizada asociada a cada criterio. Con esto cerramos Criterio 1."
+"Los criterios definidos son AC-01 a AC-07: buscar libro, ver detalle, confirmar agregado al carrito, validar carrito, ver formulario de checkout, redireccion a confirmacion y numero de pedido no vacio."
+
+"La trazabilidad se evidencia en el archivo Gherkin y en la automatizacion `aceptacion_front.cy.js`, donde cada criterio esta validado de forma automatica. Con esto cubrimos la parte de validacion de comportamiento esperado."
+
+"Aqui estamos vinculando lenguaje funcional de negocio con pruebas ejecutables. Es decir, primero definimos que debe pasar y luego comprobamos automaticamente que realmente pase."
+
+"Para la defensa, este punto es clave porque demuestra que la aceptacion no se quedo en descripcion teorica, sino que tiene implementacion y evidencia."
 
 ---
 
-### Persona 3 (4:10 - 6:10) - Automatizacion de pruebas funcionales (interaccion usuario)
+## Criterio 2 - Pruebas funcionales web (Persona 3 - 4:00 a 6:00)
+
 **Que abrir en pantalla**
-1. `cypress/e2e/compra_libro.cy.js`.
-2. Flujo en navegador (landing -> home -> detalle -> carrito -> checkout -> confirmacion).
-3. Reporte Cypress: `cypress/reports/html/index.html`.
 
-**Guion sugerido**
-"Las pruebas funcionales verifican la interaccion real del usuario con la interfaz web. En `compra_libro.cy.js` automatizamos el flujo de compra completo desde landing hasta confirmacion."
+1. `cypress/e2e/compra_libro.cy.js`
+2. Navegador con flujo funcional (landing -> home -> detalle -> carrito -> checkout -> confirmacion).
+3. `cypress/reports/html/index.html`
 
-"El test comprueba navegacion, busqueda, agregado al carrito, llenado del formulario de pago y validacion del resultado final. El reporte HTML evidencia ejecucion y estado de las pruebas."
+**Lectura literal**
+"Para pruebas funcionales de interfaz automatizamos el flujo completo de compra con Cypress. En este script se simula la interaccion real del usuario desde que entra a la pagina hasta que finaliza la compra."
 
-"En esta parte conviene mostrar rapidamente la ejecucion o el reporte ya generado para que se vea el resultado pass y el detalle por escenario."
+"Se valida la navegacion entre vistas, la busqueda de un libro por titulo, la adicion al carrito, el paso a checkout, el llenado del formulario y el resultado final en la pagina de confirmacion."
+
+"Como evidencia de ejecucion mostramos el reporte HTML de Cypress con el estado de los escenarios y resultados obtenidos."
+
+"Este tipo de prueba es importante porque representa el comportamiento integral de la experiencia de usuario, validando que las pantallas y acciones encadenadas funcionen correctamente."
+
+"Tambien permite detectar regresiones cuando se cambia la interfaz o el flujo de compra, ya que el mismo escenario puede volver a ejecutarse de forma repetible."
 
 ---
 
-### Persona 4 (6:10 - 8:25) - Automatizacion de pruebas de sistema (API REST)
+## Criterio 3 - Pruebas de sistema API REST (Persona 4 - 6:00 a 8:00)
+
 **Que abrir en pantalla**
-1. `cypress/e2e/integracion_api.cy.js`.
-2. Resaltar bloque CRUD y validaciones.
-3. Si tienen, reporte de ejecucion con esos tests en pass.
 
-**Guion sugerido**
-"Para pruebas de sistema verificamos la interfaz REST a traves del gateway. El flujo CRUD automatizado incluye: obtener listado, crear libro, buscar por id, actualizar, volver a buscar, eliminar y buscar tras eliminar."
+1. `cypress/e2e/integracion_api.cy.js`
+2. Coleccion Postman CRUD (en Postman abierto).
+3. Si es posible, ejecucion rapida en Collection Runner o captura de resultados.
 
-"Este ultimo paso se agrego para validar explicitamente que la entidad ya no existe despues del DELETE. Tambien se incluye prueba de pago exitoso en `/api/payments`."
+**Lectura literal**
+"Para pruebas de sistema verificamos interfaces REST del backend a traves del gateway. Primero mostramos lo automatizado en Cypress, en el archivo `integracion_api.cy.js`."
 
-"Con esto cubrimos verificacion de sistema sobre API REST y trazabilidad del ciclo de vida completo de una entidad."
+"El flujo incluye CRUD completo: crear, consultar, actualizar, volver a consultar, eliminar y consultar despues de eliminar para validar que la entidad ya no existe."
+
+"Como evidencia complementaria mostramos tambien la coleccion de Postman con el mismo flujo CRUD. Esta coleccion permite ejecutar los requests de forma secuencial y comprobar codigos de estado y datos esperados."
+
+"Con Cypress y Postman demostramos verificacion de sistema por dos vias: automatizacion en codigo y coleccion API reutilizable."
+
+"La parte de consultar despues del delete fue incluida explicitamente porque era un requisito puntual de la actividad: no basta con eliminar, tambien hay que verificar que la entidad ya no este disponible."
+
+"Al mostrar tanto Cypress como Postman, reforzamos que el flujo API esta validado y puede ser ejecutado por distintos perfiles del equipo."
 
 ---
 
-### Persona 5 (8:25 - 11:50) - Automatizacion de pruebas de carga + conclusiones
+## Criterio 4 - Pruebas de carga (Persona 5 - 8:00 a 9:45)
+
 **Que abrir en pantalla**
-1. `load-tests/prueba_carga.js`.
-2. Resaltar stages con objetivo 10,000 concurrencias y thresholds.
-3. Terminal con comando de ejecucion k6 (solo mostrar comando o corrida segun disponibilidad).
-4. Cierre con una diapositiva/resumen final.
 
-**Guion sugerido**
-"En carga usamos k6 para validar el requisito no funcional de tiempo de respuesta. El script define umbrales de rendimiento y un escenario configurado para escalar hasta 10,000 usuarios concurrentes."
+1. `load-tests/prueba_carga.js`
+2. Terminal con comando de k6.
+3. Resultado de ejecucion disponible o captura.
 
-"La metrica clave es `p(95) < 2000 ms` y tasa de error menor al 1%. Para la demostracion mostramos la configuracion completa y la evidencia de ejecucion disponible segun el entorno de prueba."
+**Lectura literal**
+"Para el criterio de carga usamos k6. El script define stages de concurrencia y thresholds para controlar rendimiento."
 
-"Como conclusiones: presentamos cobertura automatizada en los cuatro tipos de prueba solicitados, con evidencia reproducible por criterio. Como mejoras futuras, proponemos ampliar casos negativos, ejecutar carga distribuida en infraestructura dedicada y consolidar pipeline CI/CD para ejecucion continua."
+"El escenario esta configurado para escalar hasta 10,000 usuarios concurrentes y evaluar la metrica de tiempo de respuesta. El umbral principal es `p(95) < 2000 ms` y la tasa de error menor al 1%."
 
-"Feedback final del equipo: la combinacion de caso de uso documentado, pruebas E2E, pruebas de API y pruebas de carga permite una validacion integral y reutilizable para siguientes iteraciones."
+"En la demostracion mostramos la configuracion del script y la evidencia de ejecucion disponible segun entorno de prueba."
+
+"Este criterio se enfoca en comportamiento no funcional: no solo que responda bien, sino que mantenga tiempos aceptables bajo alta concurrencia."
+
+"La configuracion que mostramos deja preparado el escenario objetivo de la actividad y permite repetir la medicion en un entorno mas robusto cuando sea necesario."
 
 ---
 
-## Secuencia sugerida de navegacion en pantalla (checklist rapido)
-1. Mostrar frontend levantado.
-2. Mostrar `CU-01_compra_libro.md`.
-3. Mostrar `CU-01_compra_libro.feature`.
-4. Mostrar `aceptacion_front.cy.js`.
-5. Mostrar `compra_libro.cy.js` + reporte Cypress.
-6. Mostrar `integracion_api.cy.js` (incluyendo busqueda post-delete).
-7. Mostrar `prueba_carga.js`.
-8. Cerrar con conclusiones y feedback del equipo.
+## Criterio 5 - Video memoria, cierre y feedback (Persona 5 - 9:45 a 11:45)
+
+**Que abrir en pantalla**
+
+1. Diapositiva de resumen por criterio.
+2. Lista corta de archivos de evidencia.
+3. Diapositiva final de conclusiones.
+
+**Lectura literal**
+"Para el criterio de video memoria, en esta grabacion cubrimos contexto del sistema, aceptacion, funcionales web, API REST, carga y cierre con conclusiones y feedback."
+
+"En resumen, presentamos evidencia por criterio en estos archivos: `CU-01_compra_libro.md`, `CU-01_compra_libro.feature`, `aceptacion_front.cy.js`, `compra_libro.cy.js`, `integracion_api.cy.js`, coleccion de Postman para CRUD y `prueba_carga.js`."
+
+"Como conclusion del equipo, la estrategia aplicada nos permitio validar el sistema desde la perspectiva del usuario, de la API y del rendimiento, con pruebas automatizadas y reproducibles."
+
+"Como mejora futura proponemos ampliar escenarios negativos, reforzar ejecuciones en CI/CD y ejecutar carga distribuida en infraestructura dedicada cuando se requiera validacion intensiva."
+
+"Tambien como mejora de proceso, proponemos mantener una matriz de trazabilidad viva entre rubrica, casos de uso y scripts automatizados para facilitar futuras entregas y auditoria academica."
+
+"Muchas gracias por su atencion."
+
+---
+
+## Orden recomendado de navegacion en pantalla (checklist de demo)
+
+1. Portada + frontend levantado.
+2. `docs/aceptacion/CU-01_compra_libro.md`
+3. `docs/aceptacion/CU-01_compra_libro.feature`
+4. `cypress/e2e/aceptacion_front.cy.js`
+5. `cypress/e2e/compra_libro.cy.js`
+6. `cypress/reports/html/index.html`
+7. `cypress/e2e/integracion_api.cy.js`
+8. Postman con coleccion CRUD.
+9. `load-tests/prueba_carga.js`
+10. Cierre en diapositiva de conclusiones.
 
 ---
 
 ## Texto de transicion entre personas (lectura literal)
-- "Cedo la palabra a [Nombre], quien explicara el criterio de aceptacion y su automatizacion."
-- "Continuamos con [Nombre], que mostrara pruebas funcionales de interfaz."
-- "Ahora [Nombre] presentara pruebas de sistema sobre API REST."
-- "Para cerrar, [Nombre] mostrara carga, conclusiones y feedback del equipo."
+
+- "Ahora cedo la palabra a [Nombre], quien presentara el criterio de aceptacion."
+- "Continuamos con [Nombre], para revisar pruebas funcionales de interfaz."
+- "Seguimos con [Nombre], quien mostrara API REST en Cypress y en Postman."
+- "Ahora [Nombre] explicara la prueba de carga con k6."
+- "Finalmente, yo retomare para cerrar con conclusiones y despedida."
 
 ---
 
 ## Checklist previo a grabar (evitar cortes)
-1. Tener abierto el frontend en `http://localhost:5173`.
-2. Tener abiertos en pestañas del IDE todos los archivos del guion.
+
+1. Tener frontend abierto en `http://localhost:5173`.
+2. Tener abiertos en el IDE todos los archivos del guion.
 3. Tener listo el reporte `cypress/reports/html/index.html`.
-4. Tener terminal preparada con comandos de Cypress/k6 (aunque no se ejecuten en vivo).
-5. Probar audio y asignar cronometro por persona.
-
----
-
-## Frase de cierre recomendada
-"Con esta estrategia cubrimos validacion funcional, verificacion de sistema y rendimiento con automatizacion reproducible, cumpliendo los requisitos de la actividad y dejando una base escalable para futuras iteraciones."
+4. Tener Postman abierto con la coleccion CRUD cargada.
+5. Tener terminal con comandos preparados de Cypress y k6.
+6. Probar microfonos y asignar cronometro por persona.
